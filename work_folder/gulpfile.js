@@ -17,7 +17,7 @@ const notify = require('gulp-notify');
 // compile pug to html
 function pughtml() {
 
-    return gulp.src('./src/pug/**/*.pug', {allowEmpty:true})
+    return gulp.src('./src/pug/pages/**/*.pug', {allowEmpty:true})
 
     .pipe(plumber({
         errorHandler: notify.onError( function(err) {
@@ -54,7 +54,7 @@ function style_less() {
 
         .pipe(less())
 
-        .pipe(autoprefixer( {browsers: ['last 3 versions'], cascade: false} ))
+        .pipe(autoprefixer( {overrideBrowserslist: ['last 3 versions'], cascade: false} ))
 
         .pipe(sourcemaps.write())
 
@@ -66,7 +66,7 @@ function style_less() {
 // compile scss into css
 function style_scss() {
 
-    return gulp.src('./src/scss/main.scss', {allowEmpty:true})
+    return gulp.src('./src/scss/main/main.scss', {allowEmpty:true})
 
         .pipe(plumber({
             
@@ -82,7 +82,7 @@ function style_scss() {
 
         .pipe(sass())
 
-        .pipe(autoprefixer( {browsers: ['last 3 versions'], cascade: false} ))
+        .pipe(autoprefixer( {overrideBrowserslist: ['last 3 versions'], cascade: false} ))
 
         .pipe(sourcemaps.write())
 
